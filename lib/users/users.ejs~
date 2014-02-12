@@ -1,0 +1,35 @@
+<%- include ../layouts/header.ejs %>
+    
+    <h4>List user</h4>
+    <hr/>
+    Total data : <%= total_data %>
+    <table border="1" style="border-collapse:collapse;width:50%;">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Username</td>
+                <td>Password</td>
+            </tr>
+        </thead>
+        <% if(data.length){ 
+             
+             for(var i = 0;i<data.length;i++) { %>
+           
+            <tr>
+                <td><%= data[i].id %></td>
+                <td><%= data[i].username %></td>
+                <td><%= data[i].password_hash %></td>
+            </tr>
+        <% }
+        
+         }else{ %>
+             <tr>
+                <td colspan="3">No user</td>
+             </tr>
+        <% } %>
+    </table>
+    <div class="pagination">
+        <%- pagination %>
+    </div>
+
+<% include ../layouts/footer.ejs %>
