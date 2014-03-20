@@ -22,6 +22,13 @@ Run it
 5. what it looks like (the apps) ?  check here : http://codetrash.com/tutorial/nodejs/48/contoh-modular-nodejs-dan-bootstrap-source-code-inside
 
 
+
+NOTES
+======================
+This still under development, some links on Apps are not yet routed.
+But im still doing it, yet depends on my spare time :D
+
+
 Create an issue for asking or reporting 
 
 Tutorial about this located at : http://codetrash.com/tutorial/nodejs
