@@ -11,6 +11,7 @@ Dependencies
 2. Crypto
 3. Ejs
 4. Bootstarp 3
+5. express-myconnection
 
 
 Run it
@@ -25,7 +26,7 @@ Run it
 
 NOTES
 ======================
-This still under development, some links on Apps are not yet routed.
+This is still under development, some links on Apps are not yet routed.
 But im still doing it, yet depends on my spare time :D
 
 
