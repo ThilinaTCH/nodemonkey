@@ -1,31 +1,43 @@
-<% include ../signup/signup.ejs %>
+
 <html>
     <head>
-        
+        <title>Login</title>
+             <!-- Core CSS - Include with every page -->
+        <link href="../css/bootstrap.css" rel="stylesheet">
+        <link href="../font-awesome/css/font-awesome.css" rel="stylesheet">
+       <link href="../css/back.css" rel="stylesheet">
     </head>
-    <body>
+    <body style="background:whiteSnow;">
         
         <div id="wrapper">
             
-            <div class="container">
-                <form method="post" action="/do_login">
-                
-                    <p>
-                        <input type="text" name="username" placeholder="Username.." />
-                    </p>
-                     <p>
-                        <input type="password" name="password" placeholder="Password.." />
-                    </p>
-                     <p>
-                        <input type="submit" value="Login"/> or <a href="/signup">Sign up</a>
-                    </p>
-                
-                </form>
-            </div>
-            
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-xs-11 col-sm-6 col-md-6 col-md-offset-2">
+                        
+                        <div style="border:1px solid #ddd;padding:30px">
+                            <h2>Login</h2>
+                            <form method="post" class="form" action="/login">
+                            
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="username" placeholder="Username.." />
+                                </div>
+                                 <div class="form-group">
+                                    <input type="password" class="form-control" name="password" placeholder="Password.." />
+                                </div>
+                                 <div class="form-group">
+                                    <input type="submit" value="Login"  class="btn btn-warning"/>
+                                    <%= error_login %>
+                                 </div>
+                            
+                            </form>
+                        </div>
+                     </div>
+                </div>
+             </div>
         </div>
         
-        
-    </body>
-
+     <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap.js"></script>   
+    </body>    
 </html>
