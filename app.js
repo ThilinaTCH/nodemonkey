@@ -42,14 +42,12 @@ app.use(express.cookieParser('shhhh, very secret yoooo'));
 app.use(express.session());
 
 var login = require('./lib/login');
-var signup = require('./lib/signup');
 var users = require('./lib/users');
 
 
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(login);
-app.use(signup);
 app.use(users);
 
 
