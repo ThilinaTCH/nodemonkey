@@ -10,7 +10,7 @@ Dependencies
 1. Mysql
 2. Crypto
 3. Ejs
-4. Bootstarp 3
+4. Bootstrap 3 ( gebootstrap.com and sb-admin from startbootstrap.com) #Google it
 5. express-myconnection
 
 
