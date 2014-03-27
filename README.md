@@ -17,7 +17,7 @@ Dependencies
 Run it
 =======================
 1. create mysql database : nodejs 
-2. create a table : t_user ( id,username,password_hash, password_salt )
+2. create a table : t_user ( id,username,password_hash, password_salt ). or Just Import the SQL file in the source code
 3. seed the databse with http://localhost:3720/seeding    , it will create username & password : admin
 4. Run in on localhost :  http://localhost:3720/  ( the port set is 3720 )
 5. what it looks like (the apps) ?  check here : http://codetrash.com/tutorial/nodejs/48/contoh-modular-nodejs-dan-bootstrap-source-code-inside
