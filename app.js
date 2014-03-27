@@ -37,6 +37,7 @@ app.use(
     Set routes and middleware
 -----------------------------------*/
 
+//this is how to get the current url, it would be useful in future
 app.use(setCurrentUrl);
 
 function setCurrentUrl(req, res, next) {
@@ -45,12 +46,12 @@ function setCurrentUrl(req, res, next) {
 }
 
 //need to be Above app.router
-app.use(express.cookieParser('shhhh, very secret yoooo'));
+app.use(express.cookieParser('codetrash.com, very secret ssssstttt'));
 app.use(express.session());
 
-/*---------------------------------------------------
-Every lib folder created, need to be resgistered here
-----------------------------------------------------*/
+/*----------------------------------------------------------
+Every lib/module folder created, need to be registered here
+------------------------------------------------------------*/
 var login = require('./lib/login');
 var users = require('./lib/users');
 var dashboard = require('./lib/dashboard');
