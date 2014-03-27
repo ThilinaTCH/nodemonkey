@@ -22,6 +22,10 @@ Run it
 4. Run it on your localhost :  http://localhost:3720/  ( the port set is 3720 )
 5. what it looks like (the apps) ?  check here : http://codetrash.com/tutorial/nodejs/48/contoh-modular-nodejs-dan-bootstrap-source-code-inside
 
+Where to create your module ?
+==============================
+
+Goto folder lib and Copy-Paste example given ( users, dashboard n Login)
 
 
 NOTES
