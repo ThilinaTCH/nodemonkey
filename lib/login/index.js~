@@ -12,7 +12,6 @@ app.get('/',function(req,res){
     
     if(req.session.username)
         res.redirect('/dashboard');
-        
     res.render('login.ejs',{error_login:''});
    
 });

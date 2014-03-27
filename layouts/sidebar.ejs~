@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li class="active"><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li><a href="/users"><i class="fa fa-users"></i> Users</a></li>
+            <li><a href="/users"><i class="fa fa-bar-chart-o"></i> Users</a></li>
            
         </ul>
 

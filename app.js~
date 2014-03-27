@@ -44,6 +44,9 @@ function setCurrentUrl(req, res, next) {
     next();
 }
 
+console.log(CURR_URL);
+
+
 //need to be Above app.router
 app.use(express.cookieParser('shhhh, very secret yoooo'));
 app.use(express.session());

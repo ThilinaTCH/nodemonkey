@@ -53,7 +53,7 @@ function countAllUser(req,params,fn){
 /*------------------------------------------
 Adding users
 Need to include hash
--------------------------------------------*/
+*/
 exports.save = function (req, fn) {
 
     var temp = JSON.parse(JSON.stringify(req.body));

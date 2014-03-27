@@ -99,7 +99,7 @@ exports.check = function (req,hash, fn) {
       req.session.regenerate(function(){
         
         req.session.username = result[0].username;
-        req.session.user_id = result[0].user_id;
+        req.session.user_id = result.[0].user_id;
         
         console.log("User { Username :%s , ID : %d } is Logged in",req.session.username,req.session.user_id);
         return fn(true);
