@@ -44,7 +44,7 @@ function paging(total,curr_page,url){
         page +='</ul>';
         
         var x_showed = LIMIT;
-        if(total <  limit)
+        if(total <  LIMIT)
             x_showed = total
        
         page += '<div class="pull-right" style="margin-top:2px">'
@@ -100,7 +100,10 @@ app.get('/users',function(req,res){
 });
 
 app.post('/users/save-user',function(req,res){
-
+    
+    if(!req.session.username)
+	    res.redirect('/login');
+    
     process.save(req,hash,function(status,msg){
         
         console.log("Status : %s , message : %s ",status ,msg);
