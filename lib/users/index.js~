@@ -1,9 +1,12 @@
 var express = require('express');
 var app = module.exports = express();
-var procces = require('./procces');
+var process = require('./process');
+var hash = require('../../pass').hash;
 
 app.set('views',__dirname);
 app.set('view engine','ejs');
+
+var LIMIT = 10;
 
 
 
@@ -15,12 +18,10 @@ own advanced Pagination
 
 function paging(total,curr_page,url){
     
-    var limit = 5;
     var page = '';
-    var total_page = Math.ceil(total/limit);
-    
-    
-    if(total > limit) {
+    var total_page = Math.ceil(total/LIMIT);
+       
+    if(total > LIMIT) {
     
        page = '<ul class="pagination">';
         
@@ -42,7 +43,7 @@ function paging(total,curr_page,url){
         
         page +='</ul>';
         
-        var x_showed = limit;
+        var x_showed = LIMIT;
         if(total <  limit)
             x_showed = total
        
@@ -64,9 +65,8 @@ app.get('/users',function(req,res){
     var curr_page = (req.query.page != undefined) ? req.query.page : 1;
     var filter_by = (req.query.f != undefined) ? req.query.f : "";
     var qsearch = (req.query.q != undefined) ? req.query.q : "";
-    var limit =5;
     var page  = (req.query.page != undefined) ? req.query.page : 0;
-    var offset= (page==0) ? 0 : (page - 1) * limit;
+    var offset= (page==0) ? 0 : (page - 1) * LIMIT;
       
     /*Params for DB*/
     var xparams = {
@@ -75,10 +75,10 @@ app.get('/users',function(req,res){
          filter_by: filter_by,
          qsearch  : qsearch,
          offset   : offset,
-         limit    : limit
+         limit    : LIMIT
     }
     
-    procces.getUser(req,xparams,function(status,data,total_data){
+    process.getUser(req,xparams,function(status,data,total_data){
        
        var url = '/users?sort_by='+filter_by+'&q='+qsearch+'&page=';
            
@@ -99,12 +99,16 @@ app.get('/users',function(req,res){
     
 });
 
-app.get('/add-user',function(){
+app.post('/users/save-user',function(req,res){
 
-    process.save(req,function(status,msg){
+    process.save(req,hash,function(status,msg){
         
         console.log("Status : %s , message : %s ",status ,msg);
-        if(status)
-            res.redirect('/users');
+        res.type('json');
+        if(!status)
+            res.send({ status:"false"});   
+        
+        res.send({ status:"true"});    
+       
    });
 });

@@ -1,3 +1,5 @@
+/*JUST EN EXAMPLE OF JS, you can either remove this file or Modify
+======================================================================*/
 var BASE_URL;
 if (!window.location.origin)
      window.location.origin = window.location.protocol+"//"+window.location.host;
@@ -27,10 +29,10 @@ $(function(){
        
         if(event.which == 13){ 
              var t_val = $("#search-field").val();
-             event.preventDefault();
+             event.preventDefault(); //it doesnt work without this line
              window.location.href =BASE_URL+'/users?f='+CURR_FILT+'&q='+t_val+'&page='+CURR_PAGE;
         }
     });
     
-    
-});
+   
+});//end of document raeady

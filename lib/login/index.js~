@@ -12,7 +12,7 @@ then i load the hass
 
 var express = require('express');
 var app = module.exports = express();
-var process = require('./procces');
+var process = require('./process');
 
 
 app.set('views',__dirname);

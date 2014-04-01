@@ -1,3 +1,5 @@
+/*JUST EN EXAMPLE OF JS, you can either remove this file or Modify
+======================================================================*/
 var BASE_URL;
 if (!window.location.origin)
      window.location.origin = window.location.protocol+"//"+window.location.host;
@@ -32,5 +34,5 @@ $(function(){
         }
     });
     
-    
-});
+   
+});//end of document raeady
