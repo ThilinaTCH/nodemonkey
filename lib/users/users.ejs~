@@ -57,9 +57,12 @@
                                     <td><%=(data[i].status =='1') ? 'Active' : 'Inactive' %></td>
                                     <td>
                                         <a href="javascript:void(0)" class="edit-user" data-user="<%=data[i].id%>,<%=data[i].username%>,<%=data[i].status%>">
-                                            <i class="fa fa-pencil"></i>&nbsp;
+                                            <i class="fa fa-pencil"></i> Edit
                                         </a>
-                                    
+                                         | 
+                                        <a href="javascript:void(0)" onclick="delete_user(<%=data[i].id%>)">
+                                            <i class="fa fa-times"></i> Delete
+                                        </a>
                                     </td>
                                 </tr>
                             <% no++; }

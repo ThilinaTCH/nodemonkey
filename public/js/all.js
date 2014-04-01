@@ -7,7 +7,33 @@ if (!window.location.origin)
 BASE_URL = window.location.origin;
 
 
-/*User Module JS*/
+function delete_user(id){
+
+    $.ajax({
+    
+        url:"/users/delete-user",type:"post",dataType:"json",
+        data: {user_id:id},
+        beforeSend:function(){
+        
+        },
+        success:function(result){
+        
+            if(result.status){
+            
+                $('#myModal').modal('hide')
+                window.location.reload(true);
+            }
+        },
+        error:function(xhr,status,err){
+            
+            console.log(err);
+        }
+    
+    });        
+
+}
+
+/*Document ready*/
 $(function(){
         
     $("#sort-by").change(function(){
