@@ -34,5 +34,54 @@ $(function(){
         }
     });
     
+    $("#save-user").click(function(){
+            
+        $.ajax({
+        
+            url:"/users/save-user",type:"post",dataType:"json",
+            data: $("#user-form").serialize(),
+            beforeSend:function(){
+            
+            },
+            success:function(result){
+            
+                if(result.status){
+                
+                    $('#myModal').modal('hide')
+                    window.location.reload(true);
+                }
+            },
+            error:function(xhr,status,err){
+                
+                console.log(err);
+            }
+        
+        });        
+    });
+    
+    //edit user 
+    $(".edit-user").click(function(){
+     
+        var data = $(this).attr('data-user').split(',');
+    
+        $(".pass-info").text("(Leave blank if password is not changed)");
+       
+        if(data[2]=='0'){
+            
+            $("#status-inactive").prop('checked', true);
+        }else{
+            $("#status-active").prop('checked', true);
+        }
+        $("#user_id").val(data[0]);
+        $('#username').val(data[1]);
+        $("#modal-user").modal('show');
+        $('#modal-user').on('hide.bs.modal', function (e) {
+            
+             $(".pass-info").text("");
+             $("#user_id,#username").val("");
+        });
+        
+    });
+    
    
 });//end of document raeady

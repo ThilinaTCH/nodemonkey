@@ -8,7 +8,8 @@ exports.getUser = function(req,params, fn){
         if(params.qsearch !='' && params.filter_by=='')
             if_search +=" AND username LIKE '%"+params.qsearch+"%' ";
        
-        var query = connection.query('SELECT * FROM t_user WHERE 1=1 '+if_search+' LIMIT ?,?',[params.offset,params.limit],function(err,rows){
+        var query = connection.query('SELECT * FROM t_user WHERE 1=1 '+if_search+' LIMIT ?,?',[params.offset,params.limit],function(err,rows)
+        {
             
             if(err)
                 return fn(false,err);
@@ -39,7 +40,8 @@ function countAllUser(req,params,fn){
         if(params.qsearch !='' && params.filter_by=='')
             if_search +=" AND username LIKE '%"+params.qsearch+"%' ";
         
-        var query = connection.query('SELECT COUNT(id) as all_user FROM t_user WHERE 1=1 '+if_search+' ',function(err,rows){
+        var query = connection.query('SELECT COUNT(id) as all_user FROM t_user WHERE 1=1 '+if_search+' ',function(err,rows)
+        {
         
             if(err)
                 return fn(err);
@@ -58,35 +60,75 @@ exports.save = function (req,hash,fn) {
 
     var temp = JSON.parse(JSON.stringify(req.body));
    
-    //set password = temp.username
-    hash(temp.username, function(err, salt_it, hash_it){
+   
+     //set password = temp.username
+    hash(temp.password, function(err, salt_it, hash_it){
     
         if (err) throw err;
              
-         /*Seeding db*/
          req.getConnection(function (err, connection) {
-      
-            var exape = {
-                            username:temp.username,
-                            password_salt:salt_it,
-                            password_hash:hash_it,
-                            status:temp.status
-                         };
-            connection.query("INSERT INTO t_user set ? ",exape, function(err, rows){
-      
-	          if (err) {
-	            
-	          	  return fn(false,err); 
-	          	   
-	          }else{
-	          	
-	          	  return fn(true," New user created");
-	          }
+            
+            
+            if(temp.user_id==''){
+            
+                var insert = {
+                                username:temp.username,
+                                password_salt:salt_it,
+                                password_hash:hash_it,
+                                status:temp.status
+                             };
+                connection.query("INSERT INTO t_user set ? ",insert, function(err, rows)
+                {
+          
+                  if (err) {
+                    
+                  	  return fn(false,err); 
+                  	   
+                  }else{
+                  	
+                  	  return fn(true," New user created");
+                  }
 
-	        });
+                });
+            
+            }else{
+                
+                var update;
+                if(temp.password!=''){ //if password is filled
+                    
+                     update = {
+                                username:temp.username,
+                                password_salt:salt_it,
+                                password_hash:hash_it,
+                                status:temp.status
+                             };
+                    
+                }else{
+                    
+                    update = {
+                                username:temp.username,
+                                status:temp.status
+                             };
+                }
+                connection.query("UPDATE t_user set ? WHERE id = ? ",[update,temp.user_id], function(err, rows)
+                {
+          
+                  if (err) {
+                    
+                  	  return fn(false,err); 
+                  	   
+                  }else{
+                  	
+                  	  return fn(true," user Updated");
+                  }
+
+                });
+              
+            }
         });
 
     }); //end of hash
+    
     
 };
 

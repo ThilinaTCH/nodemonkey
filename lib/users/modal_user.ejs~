@@ -10,19 +10,21 @@
             <form role="form" id="user-form" method="post" action="/users/save-user">
               <div class="form-group">
                 <label for="username">Email address</label>
+                <input type="hidden" name="user_id" id"user_id" value=""/>
                 <input type="text" class="form-control" name="username" id="username" placeholder="Username..." required>
               </div>
               <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Password <small class="pass-info"></small></label>
                 <input type="password" class="form-control" name="password" id="password" placeholder="Password..." required>
               </div>
               
               <label class="radio-inline">
-                  <input type="radio" id="active" name="status" value="1" checked> Active
+                  <input type="radio" id="status-active" name="status" value="1" checked> Active
                </label>
               <label class="radio-inline">
-                  <input type="radio" id="inactive" name="status" value="0"> Inactive
+                  <input type="radio" id="status-inactive" name="status" value="0"> Inactive
                 </label>
+              
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                 <button type="button" class="btn btn-primary" id="save-user"><i class="fa fa-save"></i> Save</button>
@@ -33,35 +35,4 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<script type="text/javascript">
 
-    $(function(){
-        
-        $("#save-user").click(function(){
-            
-            $.ajax({
-            
-                url:"/users/save-user",type:"post",dataType:"json",
-                data: $("#user-form").serialize(),
-                beforeSend:function(){
-                
-                },
-                success:function(result){
-                
-                    if(result.status){
-                    
-                        $('#myModal').modal('hide')
-                        window.location.reload(true);
-                    }
-                },
-                error:function(xhr,status,err){
-                    
-                    console.log(err);
-                }
-            
-            });        
-        });
-    
-    });
-
-</script>
